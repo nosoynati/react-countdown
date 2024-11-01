@@ -1,0 +1,19 @@
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body, html {
+    font-family: "Consolas", sans-serif;
+}
+h1 {
+    text-align: center;
+    color: #191919;
+}
+
+.main {
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    background-color: aquamarine;
+}
