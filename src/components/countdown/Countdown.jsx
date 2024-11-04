@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { getDate } from "../../utils/getDatae";
-
 import "./style.scss";
+import DoneCount from '../done/DoneCount'
 
 const Countdown = () => {
 
@@ -13,15 +12,18 @@ const Countdown = () => {
   const HOUR = 60 * MINUTE;
   const DAY = 24 * HOUR;
 
-  const [loading, setLoading] = useState(true);
   const [date, setDate] = useState({ day: "" });
   const [time, setTime] = useState({ hours: "", minutes: "", seconds: "" });
+  const [ isDone, setIsDone ] = useState(false)
 
-  // const dateconvert = dateConversion()
   useEffect(() => {
     const gatDateCalc = () => {
       const dayToday = new Date();
       const timeDiff = targetDay - dayToday;
+      if(timeDiff <= 0) {
+        setIsDone(true)
+        return
+      }
 
       setDate({
         day: Math.floor(timeDiff / DAY),
@@ -32,7 +34,6 @@ const Countdown = () => {
         seconds: Math.floor((timeDiff % MINUTE) / SECOND),
       });
     };
-    setLoading(false)
     // gatDateCalc();
 
     const timeInterval = setInterval(() => {
@@ -41,8 +42,8 @@ const Countdown = () => {
     return () => clearInterval(timeInterval);
   }, [targetDay]);
 
-  if (loading) {
-    return <p className="loader">Loading...</p>;
+  if(isDone) {
+    <DoneCount />
   }
   return (
     <>
