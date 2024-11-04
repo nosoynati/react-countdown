@@ -1,65 +1,60 @@
 import { useState, useEffect } from "react";
-// import { dateConversion } from "../../utils/dateConversion";
 import { getDate } from "../../utils/getDatae";
-import * as consts from './constants'
+
 import "./style.scss";
 
-
-
 const Countdown = () => {
-  const {DD, DAYCALC, MILISEC, MM, SS, HOURCALC, HH } = consts
-  const dayToday = new Date();
-  const targetDay = getDate("2024/11/24");
-  const timeDiff = targetDay - dayToday;
+
+  const targetDay = new Date("2024/11/24");
+
+  const MILISEC = 1000;
+  const SECOND = MILISEC;
+  const MINUTE = 60 * SECOND;
+  const HOUR = 60 * MINUTE;
+  const DAY = 24 * HOUR;
+
   const [loading, setLoading] = useState(true);
-  const [date, setDate] = useState({});
+  const [date, setDate] = useState({ day: "" });
+  const [time, setTime] = useState({ hours: "", minutes: "", seconds: "" });
 
-  const [time, setTime] = useState({});
-
-  // const dateconvert = dateConversion();
+  // const dateconvert = dateConversion()
   useEffect(() => {
-    setDate({
-      day: Math.floor(timeDiff / DAYCALC),
-    });
-  }, []);
+    const gatDateCalc = () => {
+      const dayToday = new Date();
+      const timeDiff = targetDay - dayToday;
 
-  useEffect(() => {
-    setInterval(() => {
-      setTime({
-        hours: Math.floor((timeDiff % DAYCALC) / HOURCALC),
-        minutes: Math.floor((timeDiff % HOURCALC) / (MILISEC * MM)),
-        seconds: Math.floor((timeDiff % MILISEC * MM) / MILISEC)
+      setDate({
+        day: Math.floor(timeDiff / DAY),
       });
+      setTime({
+        hours: Math.floor((timeDiff % DAY) / HOUR),
+        minutes: Math.floor((timeDiff % HOUR) / MINUTE),
+        seconds: Math.floor((timeDiff % MINUTE) / SECOND),
+      });
+    };
+    setLoading(false)
+    // gatDateCalc();
+
+    const timeInterval = setInterval(() => {
+      gatDateCalc()
     }, 1000);
+    return () => clearInterval(timeInterval);
+  }, [targetDay]);
 
-    setLoading(false);
-  }, [time]);
-
-  // console.log(timeDiff)
   if (loading) {
     return <p className="loader">Loading...</p>;
   }
   return (
     <>
       <div className="counter">
-        {!loading ? (
-          <div className="reloj">
-          {date && (
-            <h3>{date.day}</h3>
-          )
-          }
-            {time && (
-              <>
-                
-                <h3>{time.hours}</h3>
-                <h3>{time.minutes}</h3>
-                <h3>{time.seconds}</h3>
-              </>
-            )}
-          </div>
-        ) : (
-          <p>Loading...</p>
-        )}
+        <div className="reloj">
+          <>
+            <h2>{date.day}</h2>
+            <h3>{time.hours}</h3>
+            <h3>{time.minutes}</h3>
+            <h3>{time.seconds}</h3>
+          </>
+        </div>
       </div>
     </>
   );

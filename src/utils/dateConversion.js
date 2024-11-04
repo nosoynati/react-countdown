@@ -9,7 +9,7 @@ export const dateConversion = () => {
   const dayconvert = (x) => Math.floor(x / DAYCALC)
   const hoursconvert = (x) => Math.floor((x % DAYCALC) / HOURCALC)
   const minutesconvert = (x) => Math.floor((x % HOURCALC) / (MILISEC * MM))
-  const secondsconvert = (x) =>  Math.floor((x % MILISEC * MM) / MILISEC );
+  const secondsconvert = (x) =>  Math.floor((x % MILISEC * MM) / MILISEC);
 
-  // return { dayconvert, hoursconvert, minutesconvert, secondsconvert }
+  return { dayconvert, hoursconvert, minutesconvert, secondsconvert }
 }
