@@ -11,5 +11,5 @@ export const dateConversion = () => {
   const minutesconvert = (x) => Math.floor((x % HOURCALC) / (MILISEC * MM))
   const secondsconvert = (x) =>  Math.floor((x % MILISEC * MM) / MILISEC );
 
-  return { dayconvert, hoursconvert, minutesconvert, secondsconvert }
+  // return { dayconvert, hoursconvert, minutesconvert, secondsconvert }
 }
