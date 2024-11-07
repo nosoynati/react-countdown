@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import "./style.scss";
+
 import DoneCount from '../done/DoneCount'
 
-const Countdown = ({targetDay}) => {
+const Countdown = ({targetDay, evento}) => {
 
   // const targetDay = new Date("2024/11/24");
 
@@ -49,21 +50,22 @@ const Countdown = ({targetDay}) => {
   return (
     <>
       <div className="counter">
+      <h2>Faltan para {evento}:</h2>
         <div className="reloj row">
           <div className="col">
-            <p>día</p>
+            <p>{ date.day == 1 ? 'día' : 'días'}</p>
             <h2>{date.day}</h2>
           </div>
           <div className="col">
-            <p>hora</p>
+            <p>{time.hours == 1 ? 'hora' : 'horas'}</p>
             <h2>{time.hours}</h2>
           </div>
           <div className="col">
-            <p>minuto</p>
+            <p>{time.minutes == 1 ? 'minuto' : 'minutos'}</p>
             <h2>{time.minutes}</h2>
           </div>
           <div className="col">
-            <p>segundo</p>
+            <p>segundos</p>
             <h2>{time.seconds}</h2>
           </div>
         </div>
