@@ -10,3 +10,13 @@
 .loader {
   color: black;
 }
+
+.reloj {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-items:center;
+}
+.col > p {
+  font-size: 1.2rem;
+}

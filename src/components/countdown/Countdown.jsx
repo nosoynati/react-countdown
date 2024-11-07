@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import "./style.scss";
 import DoneCount from '../done/DoneCount'
 
-const Countdown = () => {
+const Countdown = ({targetDay}) => {
 
-  const targetDay = new Date("2024/11/24");
+  // const targetDay = new Date("2024/11/24");
 
   const MILISEC = 1000;
   const SECOND = MILISEC;
@@ -45,16 +45,27 @@ const Countdown = () => {
   if(isDone) {
     <DoneCount />
   }
+ 
   return (
     <>
       <div className="counter">
-        <div className="reloj">
-          <>
+        <div className="reloj row">
+          <div className="col">
+            <p>día</p>
             <h2>{date.day}</h2>
-            <h3>{time.hours}</h3>
-            <h3>{time.minutes}</h3>
-            <h3>{time.seconds}</h3>
-          </>
+          </div>
+          <div className="col">
+            <p>hora</p>
+            <h2>{time.hours}</h2>
+          </div>
+          <div className="col">
+            <p>minuto</p>
+            <h2>{time.minutes}</h2>
+          </div>
+          <div className="col">
+            <p>segundo</p>
+            <h2>{time.seconds}</h2>
+          </div>
         </div>
       </div>
     </>

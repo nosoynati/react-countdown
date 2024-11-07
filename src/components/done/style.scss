@@ -1,0 +1,5 @@
+@use '../../style/sass/global.scss' as global;
+
+.button {
+  @include global.primary-button
+}
