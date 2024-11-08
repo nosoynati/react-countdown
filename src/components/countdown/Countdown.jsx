@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import "./style.scss";
 
-import DoneCount from '../done/DoneCount'
+import DoneCount from "../done/DoneCount";
 
-const Countdown = ({targetDay, evento}) => {
-
+const Countdown = ({ targetDay, evento }) => {
   // const targetDay = new Date("2024/11/24");
 
   const MILISEC = 1000;
@@ -15,22 +14,20 @@ const Countdown = ({targetDay, evento}) => {
 
   const [date, setDate] = useState({ day: "" });
   const [time, setTime] = useState({ hours: "", minutes: "", seconds: "" });
-  const [ isDone, setIsDone ] = useState(false)
+  const [isDone, setIsDone] = useState(false);
   const formatter = (val) => {
-    if(val < 10){
-      return val.toLocaleString('es-AR', {
-      minimumIntegerDigits: 2
-    })
-    }
-    return val
-  }
+    return val.toLocaleString("es-AR", {
+      minimumIntegerDigits: 2,
+    });
+
+  };
   useEffect(() => {
     const gatDateCalc = () => {
       const dayToday = new Date();
       const timeDiff = targetDay - dayToday;
-      if(timeDiff <= 0) {
-        setIsDone(true)
-        return
+      if (timeDiff <= 0) {
+        setIsDone(true);
+        return;
       }
 
       setDate({
@@ -45,39 +42,37 @@ const Countdown = ({targetDay, evento}) => {
     // gatDateCalc();
 
     const timeInterval = setInterval(() => {
-      gatDateCalc()
+      gatDateCalc();
     }, 1000);
     return () => clearInterval(timeInterval);
   }, [targetDay]);
 
-  if(isDone) {
-    <DoneCount />
+  if (isDone) {
+    <DoneCount />;
   }
- 
+
   return (
-    <>
-      <div className="counter">
+    <div className="counter">
       <h2>Faltan para {evento}:</h2>
-        <div className="reloj row">
-          <div className="col">
-            <p>{ date.day == 1 ? 'día' : 'días'}</p>
-            <h2>{date.day}</h2>
-          </div>
-          <div className="col">
-            <p>{time.hours == 1 ? 'hora' : 'horas'}</p>
-            <h2>{time.hours}</h2>
-          </div>
-          <div className="col">
-            <p>{time.minutes == 1 ? 'minuto' : 'minutos'}</p>
-            <h2>{time.minutes}</h2>
-          </div>
-          <div className="col">
-            <p>segundos</p>
-            <h2>{time.seconds}</h2>
-          </div>
+      <div className="reloj">
+        <div className="col">
+          <div className="row"><h2>{date.day}</h2><span className="space">:</span></div>
+          <p>{date.day == 1 ? "día" : "días"}</p>
+        </div>
+        <div className="col">
+          <div className="row"><h2>{time.hours}</h2><span className="space">{ window.innerWidth >= 768 ? ':' : ''}</span></div>
+          <p>{time.hours == 1 ? "hora" : "horas"}</p>
+        </div>
+        <div className="col">
+          <div className="row"><h2>{time.minutes}</h2><span className="space">:</span></div>
+          <p>{time.minutes == 1 ? "minuto" : "minutos"}</p>
+        </div>
+        <div className="col">
+          <div className="row"><h2>{time.seconds}</h2></div>
+          <p>segundos</p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
