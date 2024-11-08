@@ -16,7 +16,14 @@ const Countdown = ({targetDay, evento}) => {
   const [date, setDate] = useState({ day: "" });
   const [time, setTime] = useState({ hours: "", minutes: "", seconds: "" });
   const [ isDone, setIsDone ] = useState(false)
-
+  const formatter = (val) => {
+    if(val < 10){
+      return val.toLocaleString('es-AR', {
+      minimumIntegerDigits: 2
+    })
+    }
+    return val
+  }
   useEffect(() => {
     const gatDateCalc = () => {
       const dayToday = new Date();
@@ -30,9 +37,9 @@ const Countdown = ({targetDay, evento}) => {
         day: Math.floor(timeDiff / DAY),
       });
       setTime({
-        hours: Math.floor((timeDiff % DAY) / HOUR),
-        minutes: Math.floor((timeDiff % HOUR) / MINUTE),
-        seconds: Math.floor((timeDiff % MINUTE) / SECOND),
+        hours: formatter(Math.floor((timeDiff % DAY) / HOUR)),
+        minutes: formatter(Math.floor((timeDiff % HOUR) / MINUTE)),
+        seconds: formatter(Math.floor((timeDiff % MINUTE) / SECOND)),
       });
     };
     // gatDateCalc();
