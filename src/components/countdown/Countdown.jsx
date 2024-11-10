@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { DateContext } from "../../context/dateContext";
+import {formatter} from '../../utils/formatter'
 import "./style.scss";
 
 import DoneCount from "../done/DoneCount";
@@ -16,12 +17,13 @@ const Countdown = ({ targetDay, evento }) => {
   const [date, setDate] = useState({ day: "" });
   const [time, setTime] = useState({ hours: "", minutes: "", seconds: "" });
   const [isDone, setIsDone] = useState(false);
-  const formatter = (val) => {
-    return val.toLocaleString("es-AR", {
-      minimumIntegerDigits: 2,
-    });
+  
+  // const formatter = (val) => {
+  //   return val.toLocaleString("es-AR", {
+  //     minimumIntegerDigits: 2,
+  //   });
 
-  };
+  // };
   useEffect(() => {
     const gatDateCalc = () => {
       const dayToday = new Date();
