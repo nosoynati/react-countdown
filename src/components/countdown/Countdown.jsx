@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { DateContext } from "../../context/dateContext";
 import "./style.scss";
 
 import DoneCount from "../done/DoneCount";
