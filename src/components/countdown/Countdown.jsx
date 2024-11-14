@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { DateContext } from "../../context/dateContext";
+import { DateContext } from "../../context/DateContext";
 import {formatter} from '../../utils/formatter'
 import "./style.scss";
 
