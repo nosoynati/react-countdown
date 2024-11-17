@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+// import { DateContext } from "../../context/DateContext";
 import {formatter} from '../../utils/formatter'
 import "./style.scss";
+import Setevent from "../formselect/Setevent";
 
 import DoneCount from "../done/DoneCount";
 
@@ -55,6 +57,7 @@ const Countdown = ({ targetDay, evento }) => {
 
   return (
     <div className="counter">
+    <Setevent />
       <h2>Faltan para {evento}:</h2>
       <div className="reloj">
         <div className="col">
