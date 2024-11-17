@@ -1,0 +1,27 @@
+.formdate {
+  position: absolute;
+  left: 2.5%;
+  top: 6%;
+
+  button {
+    appearance: none;
+    border-color: transparent;
+    border-radius: 10px;    
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 1px 1px 30px rgba(0,0,0,0.3);
+    &:hover{
+      background-color: darken($color: #e2e2e2, $amount: 1%);
+    }
+    &:active {
+      background-color: darken($color: #e2e2e2, $amount: 10%);
+    }
+
+  }
+}
+.formsubmit {
+  display: none;
+  background-color: aliceblue;
+
+
+}
