@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { DateContext } from "../../context/dateContext";
 import {formatter} from '../../utils/formatter'
 import "./style.scss";
 
@@ -71,7 +70,7 @@ const Countdown = ({ targetDay, evento }) => {
           <p>{time.minutes == 1 ? "minuto" : "minutos"}</p>
         </div>
         <div className="col">
-          <div className="row"><h2>{time.seconds}</h2></div>
+          <div className="row"><h2>{time.seconds}</h2><span className="space"></span></div>
           <p>segundos</p>
         </div>
       </div>
