@@ -1,34 +1,38 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Setevent = () => {
 
-  const [date, setDate] = useState({
+  const formdata = []
+  const [dateevent, setDateevent] = useState({
     name: "",
-    date: new Date()
+    date: ""
   });
 
-
   const handleChange = (e) => {
-    e.preventDefault()
-    setDate({
+  e.preventDefault()
+    setDateevent({
+      ...dateevent,
       [e.target.name]: e.target.value
     })
   }
+
   const handleDate = (e) => {
     e.preventDefault()
-    console.log(e.target.value)
+    formdata.push(dateevent)
+    console.log('////',formdata)
   }
-  console.log(date)
+
+  
   return (
     <div className='formdate'>
       <form onSubmit={handleDate} >
         <label htmlFor='name'>Nombre del evento
-          <input name='name' type='text' onChange={handleChange} value={date.name} />
+          <input name='name' type='text' onChange={handleChange} value={dateevent.name} />
         </label>
         <label htmlFor='date'>Fecha
-          <input name='date' type='date' onChange={handleChange} value={date.date} />
+          <input name='date' type='date' onChange={handleChange} value={dateevent.date} />
         </label>
-        <input type='submit' value="Set" />
+        <button type='submit'>Send</button>
       </form>
     </div>
   )
