@@ -1,15 +1,28 @@
 .formdate {
-  position: absolute;
-  left: 2.5%;
-  top: 6%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  max-width: 340px;
+
+  input,
+  label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    width: 100%;
+    padding: 2px;
+  }
+  label {
+    display: block;
+    margin: 2px 0;
+  }
 
   button {
+    position: relative;
     appearance: none;
     border-color: transparent;
-    border-radius: 10px;    
-    padding: 10px;
+    border-radius: 8px;
     cursor: pointer;
-    box-shadow: 1px 1px 30px rgba(0,0,0,0.3);
+    
     &:hover{
       background-color: darken($color: #e2e2e2, $amount: 1%);
     }
@@ -19,9 +32,27 @@
 
   }
 }
-.formsubmit {
-  display: none;
-  background-color: aliceblue;
-
-
+button.config {
+  border-radius: 0 10px 10px 0 !important;
+  top: 45px;
+  box-shadow: 1px 1px 30px rgba(0,0,0,0.3);
+  padding: 10px;
+  z-index: 999;
+}
+button.send {
+  display: block;
+  width: 50%;
+  padding: 8px 8px;
+  margin: 15px auto;
+  box-shadow: 1px 0 20px rgba(0,0,0,0.2);
+}
+.formcontent {
+  background-color: white;
+  padding: 18px 15px 18px 36px;
+  border-radius: 6px;
+  box-shadow: 1px 1px 30px rgba(0,0,0,0.1);
+  position: relative;
+}
+.isHidden {
+  visibility: hidden;
 }

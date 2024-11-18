@@ -5,7 +5,8 @@ import { Toggle } from '../toggle/Toggle';
 const Setevent = () => {
 
   const formdata = []
-  const [visibility, setVisibility] = useState('hidden')
+  const [ isHidden, setIsHidden] = useState(true)
+
   const [dateevent, setDateevent] = useState({
     name: "",
     date: ""
@@ -24,21 +25,22 @@ const Setevent = () => {
     formdata.push(dateevent)
     console.log(formdata)
   }
-  const styles = {
-    visibility: `${visibility}`
-  }
+  // const styles = {
+  //   padding: "10px",
+  //   visibility: `${visibility}`
+  // }
   return (
     <div className='formdate'>
 
-      <Toggle visibility={visibility} setState={setVisibility}>
-        <form onSubmit={handleDate} style={styles}>
+      <Toggle isHidden={isHidden} setState={setIsHidden}>
+        <form onSubmit={handleDate} className={`formcontent ${isHidden}`}>
           <label htmlFor='name'>Nombre del evento
-            <input name='name' type='text' id='name' onChange={handleChange} value={dateevent.name} />
+            <input name='name' type='text' id='name' onChange={handleChange} value={dateevent.name} className='input'/>
           </label>
           <label htmlFor='date'>Fecha
-            <input name='date' type='date' id='date' onChange={handleChange} value={dateevent.date} />
+            <input name='date' type='date' id='date' onChange={handleChange} value={dateevent.date} className='input'/>
           </label>
-          <button type='submit'>Send</button>
+          <button type='submit' className='send'>Send</button>
         </form>
 
       </Toggle>

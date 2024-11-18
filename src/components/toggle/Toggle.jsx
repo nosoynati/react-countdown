@@ -1,11 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
-export const Toggle = ({children, visibility, setState}) => {
+export const Toggle = ({children, isHidden, setState}) => {
 
   const handleClick = () => {
-    setState(visibility === 'hidden' ? 'visible' : 'hidden')
-    console.log(visibility)
+
+    setState(!isHidden)
+
   }
   return (
     <>
@@ -13,7 +14,7 @@ export const Toggle = ({children, visibility, setState}) => {
         <FontAwesomeIcon icon={['fas', 'gear']} />
       </button>
       {
-        visibility === 'visible' ? children : null
+        !isHidden ? children : null
       }
     </>
   )
