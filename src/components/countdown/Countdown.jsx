@@ -15,7 +15,7 @@ const Countdown = ({ targetDay, evento }) => {
   const HOUR = 60 * MINUTE;
   const DAY = 24 * HOUR;
 
-  const [date, setDate] = useState({ day: "" });
+  // const [date, setDate] = useState({ day: "" });
   const [time, setTime] = useState({ hours: "", minutes: "", seconds: "" });
   const [isDone, setIsDone] = useState(false);
   
@@ -33,11 +33,8 @@ const Countdown = ({ targetDay, evento }) => {
         setIsDone(true);
         return;
       }
-
-      setDate({
-        day: Math.floor(timeDiff / DAY),
-      });
       setTime({
+        day: Math.floor(timeDiff / DAY),
         hours: formatter(Math.floor((timeDiff % DAY) / HOUR)),
         minutes: formatter(Math.floor((timeDiff % HOUR) / MINUTE)),
         seconds: formatter(Math.floor((timeDiff % MINUTE) / SECOND)),
@@ -61,8 +58,8 @@ const Countdown = ({ targetDay, evento }) => {
       <h2>Faltan para {evento}:</h2>
       <div className="reloj">
         <div className="col">
-          <div className="row"><h2>{date.day}</h2><span className="space">:</span></div>
-          <p>{date.day == 1 ? "día" : "días"}</p>
+          <div className="row"><h2>{time.day}</h2><span className="space">:</span></div>
+          <p>{time.day == 1 ? "día" : "días"}</p>
         </div>
         <div className="col">
           <div className="row"><h2>{time.hours}</h2><span className="space">{ window.innerWidth >= 768 ? ':' : ''}</span></div>
