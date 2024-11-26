@@ -1,8 +1,22 @@
 import { createContext, useState } from "react";
-
-
-// const [date, setDate] = useState({ day: "" });
 // const [time, setTime] = useState({ hours: "", minutes: "", seconds: "" });
 // const [isDone, setIsDone] = useState(false);
 
-export const DateContext = createContext()
+export default function DateContext({ children }) {
+
+  const DateContext = createContext(null)
+
+
+  const [dates, setDates] = useState("hwy");
+
+  const handleDate = () => {
+    setDates("Heeeeey")
+    console.log(dates)
+  }
+
+  return (
+    <DateContext.Provider value={{dates, setDates, handleDate}}>
+      {children}
+    </DateContext.Provider>
+  )
+}

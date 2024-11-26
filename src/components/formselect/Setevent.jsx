@@ -33,6 +33,7 @@ const Setevent = () => {
     <div className='formdate'>
 
       <Toggle isHidden={isHidden} setState={setIsHidden}>
+      
         <form onSubmit={handleDate} className={`formcontent ${isHidden}`}>
           <label htmlFor='name'>Nombre del evento
             <input name='name' type='text' id='name' onChange={handleChange} value={dateevent.name} className='input'/>

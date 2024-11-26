@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-// import { DateContext } from "../../context/DateContext";
+import { useState, useEffect, useContext } from "react";
+import DateContext from "../../context/DateContext";
 import {formatter} from '../../utils/formatter'
 import "./style.scss";
 import Setevent from "../formselect/Setevent";
