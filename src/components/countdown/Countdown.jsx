@@ -12,7 +12,7 @@ const Countdown = ({ evento }) => {
 
   const { DAY, SECOND, HOUR, MINUTE } = TIMES
 
-  const {targetDay} = useContext(DateContext)
+  const {targetDay, formdata } = useContext(DateContext)
 
   const [time, setTime] = useState({ day: "", hours: "", minutes: "", seconds: "" });
   const [isDone, setIsDone] = useState(false);
@@ -54,7 +54,7 @@ const Countdown = ({ evento }) => {
   return (
     <div className="counter">
     <Setevent />
-      <h2>Faltan para {evento}:</h2>
+      <h2>Faltan para {formdata ? formdata.name : evento}:</h2>
       <div className="reloj">
         <div className="col">
           <div className="row"><h2>{time.day}</h2><span className="space">:</span></div>

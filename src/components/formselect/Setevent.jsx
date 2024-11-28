@@ -19,12 +19,10 @@ const Setevent = () => {
   const handleDate = (e) => {
     e.preventDefault()
     setFormdata(dateevent)
+    setIsHidden(!isHidden)
     console.log(formdata)
   }
-  // const styles = {
-  //   padding: "10px",
-  //   visibility: `${visibility}`
-  // }
+
   return (
     <div className='formdate'>
 
