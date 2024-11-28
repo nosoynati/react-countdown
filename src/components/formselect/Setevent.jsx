@@ -1,16 +1,13 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './Setevent.scss';
 import { Toggle } from '../toggle/Toggle';
+import { DateContext } from '../../context/DateContext';
 
 const Setevent = () => {
 
-  const formdata = []
   const [ isHidden, setIsHidden] = useState(true)
 
-  const [dateevent, setDateevent] = useState({
-    name: "",
-    date: ""
-  });
+  const {dateevent,  setDateevent, formdata, setFormdata } = useContext(DateContext)
 
   const handleChange = (e) => {
     e.preventDefault()
@@ -19,10 +16,9 @@ const Setevent = () => {
       [e.target.name]: e.target.value
     })
   }
-
   const handleDate = (e) => {
     e.preventDefault()
-    formdata.push(dateevent)
+    setFormdata(dateevent)
     console.log(formdata)
   }
   // const styles = {

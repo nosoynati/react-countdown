@@ -1,22 +1,20 @@
 import { useState, useEffect, useContext } from "react";
-import DateContext from "../../context/DateContext";
+import {DateContext} from "../../context/DateContext";
 import {formatter} from '../../utils/formatter'
+import * as TIMES from '../../utils/constants'
+
 import "./style.scss";
 import Setevent from "../formselect/Setevent";
 
 import DoneCount from "../done/DoneCount";
 
-const Countdown = ({ targetDay, evento }) => {
-  // const targetDay = new Date("2024/11/24");
+const Countdown = ({ evento }) => {
 
-  const MILISEC = 1000;
-  const SECOND = MILISEC;
-  const MINUTE = 60 * SECOND;
-  const HOUR = 60 * MINUTE;
-  const DAY = 24 * HOUR;
+  const { DAY, SECOND, HOUR, MINUTE } = TIMES
 
-  // const [date, setDate] = useState({ day: "" });
-  const [time, setTime] = useState({ hours: "", minutes: "", seconds: "" });
+  const {targetDay} = useContext(DateContext)
+
+  const [time, setTime] = useState({ day: "", hours: "", minutes: "", seconds: "" });
   const [isDone, setIsDone] = useState(false);
   
   // const formatter = (val) => {
@@ -28,16 +26,17 @@ const Countdown = ({ targetDay, evento }) => {
   useEffect(() => {
     const gatDateCalc = () => {
       const dayToday = new Date();
-      const timeDiff = targetDay - dayToday;
+      const timeDiff = new Date(targetDay) - dayToday;
+      
       if (timeDiff <= 0) {
         setIsDone(true);
         return;
       }
       setTime({
-        day: Math.floor(timeDiff / DAY),
-        hours: formatter(Math.floor((timeDiff % DAY) / HOUR)),
-        minutes: formatter(Math.floor((timeDiff % HOUR) / MINUTE)),
-        seconds: formatter(Math.floor((timeDiff % MINUTE) / SECOND)),
+        day: Math.ceil(timeDiff / DAY),
+        hours: formatter(Math.ceil((timeDiff % DAY) / HOUR)),
+        minutes: formatter(Math.ceil((timeDiff % HOUR) / MINUTE)),
+        seconds: formatter(Math.ceil((timeDiff % MINUTE) / SECOND)),
       });
     };
     // gatDateCalc();
