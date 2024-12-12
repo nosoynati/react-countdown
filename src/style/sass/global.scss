@@ -6,9 +6,15 @@
   padding: 0;
   box-sizing: border-box;
 }
+:root {
+  --global-peach: peachpuff;
+  --global-dark: #c4c4c4;
+  --font-base: 'Barlow',sans-serif;
+  --font-base: 16px;
+}
 @mixin primary-button {
-  background-color: peachpuff;
-  color: #c4c4c4;
+  background-color: var(--global-peach);
+  color: var(--global-dark);
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
@@ -55,5 +61,5 @@ footer {
   padding: 1rem 0.125rem;
   height: 100vh;
   width: 100%;
-  background-color: whitesmoke;
+  background-color: white;
 }

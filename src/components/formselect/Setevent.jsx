@@ -1,16 +1,13 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './Setevent.scss';
 import { Toggle } from '../toggle/Toggle';
+import { DateContext } from '../../context/DateContext';
 
 const Setevent = () => {
 
-  const formdata = []
   const [ isHidden, setIsHidden] = useState(true)
 
-  const [dateevent, setDateevent] = useState({
-    name: "",
-    date: ""
-  });
+  const {dateevent,  setDateevent, formdata, setFormdata } = useContext(DateContext)
 
   const handleChange = (e) => {
     e.preventDefault()
@@ -19,20 +16,18 @@ const Setevent = () => {
       [e.target.name]: e.target.value
     })
   }
-
   const handleDate = (e) => {
     e.preventDefault()
-    formdata.push(dateevent)
+    setFormdata(dateevent)
+    setIsHidden(!isHidden)
     console.log(formdata)
   }
-  // const styles = {
-  //   padding: "10px",
-  //   visibility: `${visibility}`
-  // }
+
   return (
     <div className='formdate'>
 
       <Toggle isHidden={isHidden} setState={setIsHidden}>
+      
         <form onSubmit={handleDate} className={`formcontent ${isHidden}`}>
           <label htmlFor='name'>Nombre del evento
             <input name='name' type='text' id='name' onChange={handleChange} value={dateevent.name} className='input'/>

@@ -1,38 +1,36 @@
 /* eslint-disable no-unused-vars */
 import { createContext, useState } from "react";
-// import formatter from '../utils/formatter';
-// import * as TIMES from '../utils/constants'
+// import {formatter} from '../utils/formatter';
 
 export const DateContext = createContext(null)
 
 const DateContextProvider = ({children}) => {
 
-  
-  // const { DAY, MINUTE, SECOND, HOUR } = TIMES
-  // const [time, setTime] = useState({ day: "", hours: "", minutes: "", seconds: "" });
+  let defaultDate = new Date("12-24-2024")
 
-  const [ targetday, setTargetday ] = useState({name: "", dateexpected: ""})
-  const formdata = [];
+  const [ dateevent, setDateevent ] = useState({name: "", date: ""})
 
-  const dayToday = new Date();
-  const timeDiff = targetday.dateexpected - dayToday;
+  let targetDay = dateevent?.date || defaultDate
+  const [formdata, setFormdata ] = useState(null);
 
-  const handleDate = (e) => {
-    e.preventDefault()
-    formdata.push()
-    console.log(formdata)
-  }
-  // setTime({
-  //   day: Math.floor(timeDiff / DAY),
-  //   hours: formatter(Math.floor((timeDiff % DAY) / HOUR)),
-  //   minutes: formatter(Math.floor((timeDiff % HOUR) / MINUTE)),
-  //   seconds: formatter(Math.floor((timeDiff % MINUTE) / SECOND)),
-  // });
+  // const handleChange = (e) => {
+  //   e.preventDefault()
+  //   setDateevent({
+  //     ...dateevent,
+  //     [e.target.name]: e.target.value
+  //   })
+  // }
+
+  // const handleDate = (e) => {
+  //   e.preventDefault()
+  //   formdata.push()
+  //   console.log(formdata)
+  // }
 
   return (
-    <DateContext.Provider value={{ dayToday, timeDiff, handleDate, targetday, setTargetday, formdata,}}>
+    <DateContext.Provider value={{ dateevent, setDateevent, formdata, setFormdata, targetDay}}>
       {children}
     </DateContext.Provider>
   )
 }
-export default DateContextProvider
+export default DateContextProvider;
