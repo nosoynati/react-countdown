@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 export const Toggle = ({children, isHidden, setState}) => {
 
   const handleClick = () => {
-
     setState(!isHidden)
 
   }

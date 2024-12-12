@@ -1,13 +1,15 @@
-import { useState, useEffect } from "react";
-// import { DateContext } from "../../context/DateContext";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect, useContext } from "react";
+import { DateContext } from "../../context/DateContext";
 import {formatter} from '../../utils/formatter'
 import "./style.scss";
 import Setevent from "../formselect/Setevent";
-
 import DoneCount from "../done/DoneCount";
 
 const Countdown = ({ targetDay, evento }) => {
-  // const targetDay = new Date("2024/11/24");
+
+  const datecontext = useContext(DateContext)
+  const { targetday } = datecontext
 
   const MILISEC = 1000;
   const SECOND = MILISEC;
@@ -15,16 +17,9 @@ const Countdown = ({ targetDay, evento }) => {
   const HOUR = 60 * MINUTE;
   const DAY = 24 * HOUR;
 
-  // const [date, setDate] = useState({ day: "" });
   const [time, setTime] = useState({ hours: "", minutes: "", seconds: "" });
   const [isDone, setIsDone] = useState(false);
   
-  // const formatter = (val) => {
-  //   return val.toLocaleString("es-AR", {
-  //     minimumIntegerDigits: 2,
-  //   });
-
-  // };
   useEffect(() => {
     const gatDateCalc = () => {
       const dayToday = new Date();
@@ -40,7 +35,6 @@ const Countdown = ({ targetDay, evento }) => {
         seconds: formatter(Math.floor((timeDiff % MINUTE) / SECOND)),
       });
     };
-    // gatDateCalc();
 
     const timeInterval = setInterval(() => {
       gatDateCalc();
