@@ -1,0 +1,20 @@
+.hidden {
+	display: none;
+}
+.modal--backdrop {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	background: rgba($color: #161630, $alpha: 0.2);
+	position: fixed;
+	top: 0;
+}
+.modal--container {
+	background-color: white;
+	display: block;
+	max-width: 600px;
+	height: 50vh;
+	position: relative;
+	margin: auto;
+	top: calc(100vh / 5);
+}

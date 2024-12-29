@@ -6,7 +6,7 @@ export const DateContext = createContext(null)
 
 const DateContextProvider = ({children}) => {
 
-  let defaultDate = new Date("12-24-2024")
+  let defaultDate = new Date("03-05-2025").toLocaleDateString('es-AR')
 
   const [ dateevent, setDateevent ] = useState({name: "", date: ""})
 

@@ -8,6 +8,7 @@
 }
 :root {
   --global-peach: peachpuff;
+  --global-peach-dark: rgb(241, 186, 160);
   --global-dark: #c4c4c4;
   --font-base: 'Barlow',sans-serif;
   --font-base: 16px;
@@ -20,7 +21,7 @@
   cursor: pointer;
 
   &:hover {
-    background-color: darken($color: peachpuff, $amount: 10%);
+    background-color: var(--global-peach-dark);
   }
 }
 #root {
@@ -36,7 +37,6 @@ body {
   height: 100vh;
   overflow: hidden;
   align-items: center;
-  // width: 100vw;
   justify-content: center;
 }
 h1,
