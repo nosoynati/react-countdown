@@ -13,20 +13,6 @@ const DateContextProvider = ({children}) => {
   let targetDay = dateevent?.date || defaultDate
   const [formdata, setFormdata ] = useState(null);
 
-  // const handleChange = (e) => {
-  //   e.preventDefault()
-  //   setDateevent({
-  //     ...dateevent,
-  //     [e.target.name]: e.target.value
-  //   })
-  // }
-
-  // const handleDate = (e) => {
-  //   e.preventDefault()
-  //   formdata.push()
-  //   console.log(formdata)
-  // }
-
   return (
     <DateContext.Provider value={{ dateevent, setDateevent, formdata, setFormdata, targetDay}}>
       {children}

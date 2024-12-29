@@ -7,7 +7,7 @@ const Setevent = () => {
 
   const [ isHidden, setIsHidden] = useState(true)
 
-  const {dateevent,  setDateevent, formdata, setFormdata } = useContext(DateContext)
+  const {dateevent,  setDateevent, setFormdata } = useContext(DateContext)
 
   const handleChange = (e) => {
     e.preventDefault()
@@ -20,7 +20,6 @@ const Setevent = () => {
     e.preventDefault()
     setFormdata(dateevent)
     setIsHidden(!isHidden)
-    console.log(formdata)
   }
 
   return (
