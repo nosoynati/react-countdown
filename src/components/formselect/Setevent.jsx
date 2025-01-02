@@ -6,9 +6,9 @@ import Modal from '../modal/Modal';
 
 const Setevent = () => {
 
-  const [ isHidden, setIsHidden] = useState(true)
+  const [isHidden, setIsHidden] = useState(true)
 
-  const {dateevent,  setDateevent, setFormdata } = useContext(DateContext)
+  const { dateevent, setDateevent, setFormdata } = useContext(DateContext)
 
   const handleChange = (e) => {
     e.preventDefault()
@@ -22,23 +22,25 @@ const Setevent = () => {
     setFormdata(dateevent)
     setIsHidden(!isHidden)
   }
+  const handleClose = () => {
+    setIsHidden(!isHidden)
+  }
 
   return (
     <div className='formdate'>
 
       <Toggle isHidden={isHidden} setState={setIsHidden}>
-      <Modal></Modal>
-      
-        <form onSubmit={handleDate} className={`formcontent ${isHidden}`}>
-          <label htmlFor='name'>Nombre del evento
-            <input name='name' type='text' id='name' onChange={handleChange} value={dateevent.name} className='input'/>
-          </label>
-          <label htmlFor='date'>Fecha
-            <input name='date' type='date' id='date' onChange={handleChange} value={dateevent.date} className='input'/>
-          </label>
-          <button type='submit' className='send'>Send</button>
-        </form>
-
+        <Modal actionClose={handleClose}>
+          <form onSubmit={handleDate} className={`formcontent ${isHidden}`}>
+            <label htmlFor='name'>Nombre del evento
+              <input name='name' type='text' id='name' onChange={handleChange} value={dateevent.name} className='input' />
+            </label>
+            <label htmlFor='date'>Fecha
+              <input name='date' type='date' id='date' onChange={handleChange} value={dateevent.date} className='input' />
+            </label>
+            <button type='submit' className='send'>Send</button>
+          </form>
+        </Modal>
       </Toggle>
 
 

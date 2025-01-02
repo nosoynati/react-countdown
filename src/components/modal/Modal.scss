@@ -7,14 +7,18 @@
 	overflow: hidden;
 	background: rgba($color: #161630, $alpha: 0.2);
 	position: fixed;
+	backdrop-filter:blur;
 	top: 0;
+	z-index: 1300;
 }
 .modal--container {
-	background-color: white;
+	background-color: #f2f2f2;
+	box-shadow: 1px 1px 30px rgba(0,0,0,0.1);
 	display: block;
 	max-width: 600px;
-	height: 50vh;
+	min-height: 300px;
 	position: relative;
 	margin: auto;
 	top: calc(100vh / 5);
+	z-index: inherit;
 }
