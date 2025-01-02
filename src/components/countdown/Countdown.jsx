@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { DateContext } from "../../context/DateContext";
+import { DateContext } from "../../context/Context";
 import { formatter } from '../../utils/formatter'
 import * as TIMES from '../../utils/constants'
 
@@ -29,7 +29,7 @@ const Countdown = ({ evento }) => {
 
       if (timeDiff <= 0) {
         setIsDone(true);
-        return;
+        // return;
       }
       setTime({
         day: Math.ceil(timeDiff / DAY),
@@ -46,7 +46,7 @@ const Countdown = ({ evento }) => {
   }, [targetDay]);
 
   if (isDone) {
-    <DoneCount />;
+    return <DoneCount />;
   }
 
   return (

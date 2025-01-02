@@ -14,6 +14,7 @@
 .modal--container {
 	background-color: #f2f2f2;
 	box-shadow: 1px 1px 30px rgba(0,0,0,0.1);
+	border-radius: 4px;
 	display: block;
 	max-width: 600px;
 	min-height: 300px;
@@ -21,4 +22,13 @@
 	margin: auto;
 	top: calc(100vh / 5);
 	z-index: inherit;
+}
+.btn--close {
+	background-color: #f2f2f2;
+	padding: 5px;
+	margin-right: 10px;
+}
+.modal--header {
+	display: flex;
+	justify-content: flex-end;
 }

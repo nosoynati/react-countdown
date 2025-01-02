@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
-import { createContext, useState } from "react";
+import { useState } from "react";
+import { DateContext} from './Context'
 // import {formatter} from '../utils/formatter';
-
-export const DateContext = createContext(null)
 
 const DateContextProvider = ({children}) => {
 
