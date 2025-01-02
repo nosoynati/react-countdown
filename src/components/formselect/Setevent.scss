@@ -3,6 +3,7 @@
   left: 0;
   top: 0;
   max-width: 340px;
+  z-index: 999;
 
   input,
   label {
@@ -47,10 +48,7 @@ button.send {
   box-shadow: 1px 0 20px rgba(0,0,0,0.2);
 }
 .formcontent {
-  background-color: white;
   padding: 18px 15px 18px 36px;
-  border-radius: 6px;
-  box-shadow: 1px 1px 30px rgba(0,0,0,0.1);
   position: relative;
 }
 .isHidden {

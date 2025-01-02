@@ -9,14 +9,11 @@ library.add(far, fas, fab);
 
 function App() {
 
-
-  const dtaae = new Date("2025/05/03")
-
   return (
     <div className="main">
       <Datecontext>
         <Header />
-        <Countdown targetDay={dtaae} evento={'SOAD'} />
+        <Countdown evento={'SOAD'} />
       </Datecontext>
 
       <footer></footer>
