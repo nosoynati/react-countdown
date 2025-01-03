@@ -1,23 +1,21 @@
-import { useState, useEffect } from "react";
-import { DateContext } from "../../context/DateContext";
-import {formatter} from '../../utils/formatter'
-import "./style.scss";
+import { useState, useEffect, useContext } from "react";
+import { DateContext } from "../../context/Context";
+import { formatter } from '../../utils/formatter'
+import * as TIMES from '../../utils/constants'
 
+import "./style.scss";
+import Setevent from "../formselect/Setevent";
 import DoneCount from "../done/DoneCount";
 
-const Countdown = ({ targetDay, evento }) => {
-  // const targetDay = new Date("2024/11/24");
+const Countdown = ({ evento }) => {
 
-  const MILISEC = 1000;
-  const SECOND = MILISEC;
-  const MINUTE = 60 * SECOND;
-  const HOUR = 60 * MINUTE;
-  const DAY = 24 * HOUR;
+  const { DAY, SECOND, HOUR, MINUTE } = TIMES
 
-  const [date, setDate] = useState({ day: "" });
-  const [time, setTime] = useState({ hours: "", minutes: "", seconds: "" });
+  const { targetDay, formdata } = useContext(DateContext)
+
+  const [time, setTime] = useState({ day: "", hours: "", minutes: "", seconds: "" });
   const [isDone, setIsDone] = useState(false);
-  
+
   // const formatter = (val) => {
   //   return val.toLocaleString("es-AR", {
   //     minimumIntegerDigits: 2,
@@ -27,22 +25,19 @@ const Countdown = ({ targetDay, evento }) => {
   useEffect(() => {
     const gatDateCalc = () => {
       const dayToday = new Date();
-      const timeDiff = targetDay - dayToday;
+      const timeDiff = new Date(targetDay) - dayToday;
+
       if (timeDiff <= 0) {
         setIsDone(true);
-        return;
+        // return;
       }
-
-      setDate({
-        day: Math.floor(timeDiff / DAY),
-      });
       setTime({
-        hours: formatter(Math.floor((timeDiff % DAY) / HOUR)),
-        minutes: formatter(Math.floor((timeDiff % HOUR) / MINUTE)),
-        seconds: formatter(Math.floor((timeDiff % MINUTE) / SECOND)),
+        day: Math.ceil(timeDiff / DAY),
+        hours: formatter(Math.ceil((timeDiff % DAY) / HOUR)),
+        minutes: formatter(Math.ceil((timeDiff % HOUR) / MINUTE)),
+        seconds: formatter(Math.ceil((timeDiff % MINUTE) / SECOND)),
       });
     };
-    // gatDateCalc();
 
     const timeInterval = setInterval(() => {
       gatDateCalc();
@@ -51,31 +46,38 @@ const Countdown = ({ targetDay, evento }) => {
   }, [targetDay]);
 
   if (isDone) {
-    <DoneCount />;
+    return <DoneCount />;
   }
 
   return (
-    <div className="counter">
-      <h2>Faltan para {evento}:</h2>
-      <div className="reloj">
-        <div className="col">
-          <div className="row"><h2>{date.day}</h2><span className="space">:</span></div>
-          <p>{date.day == 1 ? "día" : "días"}</p>
+    <>
+      <Setevent />
+
+      <div className="counter">
+        <div className="counter--wrapper">
+          <h2>Faltan para {formdata ? formdata.name : evento}:</h2>
+          <div className="reloj">
+            <div className="col">
+              <div className="row"><h2>{time.day}</h2><span className="space">:</span></div>
+              <p>{time.day == 1 ? "día" : "días"}</p>
+            </div>
+            <div className="col">
+              <div className="row"><h2>{time.hours}</h2><span className="space">{window.innerWidth >= 768 ? ':' : ''}</span></div>
+              <p>{time.hours == 1 ? "hora" : "horas"}</p>
+            </div>
+            <div className="col">
+              <div className="row"><h2>{time.minutes}</h2><span className="space">:</span></div>
+              <p>{time.minutes == 1 ? "minuto" : "minutos"}</p>
+            </div>
+            <div className="col">
+              <div className="row"><h2>{time.seconds}</h2><span className="space"></span></div>
+              <p>segundos</p>
+            </div>
+          </div>
         </div>
-        <div className="col">
-          <div className="row"><h2>{time.hours}</h2><span className="space">{ window.innerWidth >= 768 ? ':' : ''}</span></div>
-          <p>{time.hours == 1 ? "hora" : "horas"}</p>
-        </div>
-        <div className="col">
-          <div className="row"><h2>{time.minutes}</h2><span className="space">:</span></div>
-          <p>{time.minutes == 1 ? "minuto" : "minutos"}</p>
-        </div>
-        <div className="col">
-          <div className="row"><h2>{time.seconds}</h2></div>
-          <p>segundos</p>
-        </div>
+
       </div>
-    </div>
+    </>
   );
 };
 
