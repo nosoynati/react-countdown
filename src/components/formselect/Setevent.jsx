@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import './Setevent.scss';
 import { Toggle } from '../toggle/Toggle';
-import { DateContext } from '../../context/DateContext';
+import { DateContext } from '../../context/Context';
 import Modal from '../modal/Modal';
 
 const Setevent = () => {

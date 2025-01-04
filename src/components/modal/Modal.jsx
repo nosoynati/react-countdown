@@ -16,7 +16,7 @@ const Modal = ({children, actionClose }) => {
       <div className='modal--backdrop'>
         <div className='modal--container'>
         <div className='modal--header'>
-          <button onClick={actionClose}><FontAwesomeIcon icon={['fas', 'times']} /></button>
+          <button className='btn--close' onClick={actionClose}><FontAwesomeIcon icon={['fas', 'times']} size='lg'/></button>
         </div>
           {children}
         </div>

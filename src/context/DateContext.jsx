@@ -1,7 +1,7 @@
-import { createContext, useState } from "react";
+/* eslint-disable no-unused-vars */
+import { useState } from "react";
+import { DateContext} from './Context'
 // import {formatter} from '../utils/formatter';
-
-export const DateContext = createContext(null)
 
 const DateContextProvider = ({children}) => {
 
@@ -11,20 +11,6 @@ const DateContextProvider = ({children}) => {
 
   let targetDay = dateevent?.date || defaultDate
   const [formdata, setFormdata ] = useState(null);
-
-  // const handleChange = (e) => {
-  //   e.preventDefault()
-  //   setDateevent({
-  //     ...dateevent,
-  //     [e.target.name]: e.target.value
-  //   })
-  // }
-
-  // const handleDate = (e) => {
-  //   e.preventDefault()
-  //   formdata.push()
-  //   console.log(formdata)
-  // }
 
   return (
     <DateContext.Provider value={{ dateevent, setDateevent, formdata, setFormdata, targetDay}}>

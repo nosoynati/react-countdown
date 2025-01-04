@@ -10,7 +10,7 @@ export const Toggle = ({children, isHidden, setState}) => {
   return (
     <>
      <button className='config' onClick={handleClick}>
-        <FontAwesomeIcon icon={['fas', 'gear']} />
+        <FontAwesomeIcon icon={['fas', 'gear']} inverse />
       </button>
       {
         !isHidden && children

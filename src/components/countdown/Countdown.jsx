@@ -1,11 +1,10 @@
 import { useState, useEffect, useContext } from "react";
-import { DateContext } from "../../context/DateContext";
+import { DateContext } from "../../context/Context";
 import { formatter } from '../../utils/formatter'
 import * as TIMES from '../../utils/constants'
 
 import "./style.scss";
 import Setevent from "../formselect/Setevent";
-
 import DoneCount from "../done/DoneCount";
 
 const Countdown = ({ evento }) => {
@@ -30,7 +29,7 @@ const Countdown = ({ evento }) => {
 
       if (timeDiff <= 0) {
         setIsDone(true);
-        return;
+        // return;
       }
       setTime({
         day: Math.ceil(timeDiff / DAY),
@@ -39,7 +38,6 @@ const Countdown = ({ evento }) => {
         seconds: formatter(Math.ceil((timeDiff % MINUTE) / SECOND)),
       });
     };
-    // gatDateCalc();
 
     const timeInterval = setInterval(() => {
       gatDateCalc();
@@ -48,7 +46,7 @@ const Countdown = ({ evento }) => {
   }, [targetDay]);
 
   if (isDone) {
-    <DoneCount />;
+    return <DoneCount />;
   }
 
   return (
