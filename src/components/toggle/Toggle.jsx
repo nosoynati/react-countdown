@@ -13,7 +13,7 @@ export const Toggle = ({children, isHidden, setState}) => {
         <FontAwesomeIcon icon={['fas', 'gear']} />
       </button>
       {
-        !isHidden ? children : null
+        !isHidden && children
       }
     </>
   )
