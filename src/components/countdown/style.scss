@@ -4,8 +4,8 @@
   align-items: center;
   justify-content: center;
   margin: auto;
+  border: 1px solid rgba(125, 0, 0, 0.2);
   border-radius: 5px;
-  box-shadow: 1px 1px 38px rgba(0, 0, 0, 0.1);
   padding: 0 0.9rem;
   gap: 1.5rem;
   transition: box-shadow linear 0.2s;
@@ -15,6 +15,8 @@
   @media (width >= 1024px) {
     margin: auto;
     max-width: 600px;
+    width: 500px;
+    padding: 10px 30px;
   }
   @media (width < 600px) {
     margin: 0.5rem 0;
@@ -29,6 +31,7 @@
   gap: 2rem;
   @media (width >= 1024px) {
     gap: 3rem;
+    margin: 1.2rem 1rem;
   }
 
   @media(width <= 768px){
