@@ -51,7 +51,7 @@ const Countdown = ({ evento }) => {
 
   return (
     <>
-      <Setevent />
+      {/* <Setevent /> */}
 
       <div className="counter">
         <div className="counter--wrapper">

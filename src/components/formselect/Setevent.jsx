@@ -13,7 +13,7 @@ const Setevent = () => {
   const handleChange = (e) => {
     e.preventDefault()
     setDateevent({
-      // ...dateevent,
+      ...dateevent,
       [e.target.name]: e.target.value
     })
   }
