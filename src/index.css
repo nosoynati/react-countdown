@@ -1,1 +1,6 @@
-@import '../src/style/sass/global.scss'
+@import '../src/style/sass/global.scss';
+@font-face {
+  font-family: 'DCC-Ash';
+  src:local('DCC-Ash'),
+  url('./assets/fonts/DCC-Ash.otf');
+}

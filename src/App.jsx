@@ -16,7 +16,7 @@ function App() {
         <Countdown evento={"SOAD"} />
       </Datecontext>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

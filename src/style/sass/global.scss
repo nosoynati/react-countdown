@@ -10,7 +10,7 @@
   --global-peach: peachpuff;
   --global-peach-dark: rgb(241, 186, 160);
   --global-dark: #c4c4c4;
-  --font-base: 'Barlow',sans-serif;
+  // --font-base: 'Barlow',sans-serif;
   --font-base: 16px;
 }
 @mixin primary-button {
@@ -56,7 +56,7 @@ footer {
 }
 .main {
   display: grid;
-  grid-template-rows: 15% 70% 15%;
+  grid-template-rows: 15% auto 15%;
   margin: auto;
   padding: 1rem 0.125rem;
   height: 100vh;
